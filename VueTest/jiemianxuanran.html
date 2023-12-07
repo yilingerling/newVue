@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="demo">
+    <ul>
+        <li v-for="(p, index) in persons" :key="p.id">
+            {{p.id}}-- {{p.name}}-- {{p.age}}-- <button @click="deleteP(index)">删除</button>-- <button @click="updateP(index,{id:Date.now(),name:'张三',age:'11'})">更新</button>
+        </li>
+    </ul>
+</div>
+<body>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#demo',
+            data:{
+                persons:[
+                    {id:1,name:"张三",age:11},
+                    {id:2,name:"李四",age:22},
+                    {id:3,name:"王五",age:33},
+                    {id:4,name:"赵六",age:44},
+                    {id:5,name:"王七",age:55}
+                ]
+            },
+            methods: {
+                deleteP(index){
+                    console.log(this.persons)
+                    this.persons.splice(index,1)
+                },
+                updateP(index,newP){
+                    this.persons.splice(index,1,newP)
+                }
+            },
+        })
+    </script>
+</body>
+</html>
